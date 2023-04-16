@@ -8,7 +8,7 @@
 ## Demo
 
 ## Environment
-- CIFAR10データセットによる10クラス分類モデルの学習
+- CIFAR10データセットによる10クラス分類モデルの学習(Google Colab上で実行)
   
 | 項目 | 値 |
 |------|----|
@@ -19,7 +19,7 @@
 | ライブラリ | requirements.txtを参照 |
 | GPU | NVIDIA Tesla T4 (ランタイムタイプをGPUに設定) |
 
-- Streamlitによる分類アプリ
+- Streamlitによる分類アプリ(ラップトップ上で実行)
  
 | 項目 | 値 |
 |------|----|
