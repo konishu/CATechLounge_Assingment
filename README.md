@@ -39,6 +39,8 @@ pip install -r requirements.txt
 # 分類アプリ
 pip install -r requirements.txt
 ```
+学習済みモデルのダウンロード
+**あとで書く**
  
 ## Usage
 ### CIFAR10データセットによる学習 
