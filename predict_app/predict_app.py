@@ -68,11 +68,15 @@ with col2:
             _, predicted = torch.max(outputs.data, 1)
             score = torch.softmax(outputs, dim=1)[0][predicted[0]].item()
             result = {
+                'predictions':[{
                 'classification_results': [class_names[predicted[0]]],
                 'score': [score]
+            }]
             }
 
         # 予測結果の表示
         st.write('**Classification Results:**',
-                 result['classification_results'][0])
-        st.write('**Score:**', result['score'][0])
+                 result['predictions'][0]['classification_results'][0])
+        st.write('**Score:**', result['predictions'][0]['score'][0])
+
+        print(result)
