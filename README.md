@@ -8,6 +8,9 @@
 ## Demo
 ![デモ動画](https://drive.google.com/file/d/15GDpDnXOZJj8CIXB0HdVHgxyNfW5_26m/view?usp=sharing "Sample video")
 
+![CIFAR10app_sample](https://user-images.githubusercontent.com/42666024/232496219-cf674fdc-9a4a-4bcf-88aa-c61bdd6c203a.gif)
+
+
 ## Environment
 - CIFAR10データセットによる10クラス分類モデルの学習(Google Colab上で実行)
   
