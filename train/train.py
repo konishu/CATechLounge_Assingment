@@ -5,7 +5,6 @@ import torchvision.transforms as transforms
 from tqdm import tqdm
 
 import datetime
-import sklearn.model_selection
 
 transform = transforms.Compose(
     [
@@ -110,7 +109,7 @@ def train_subsec(batch_size,device="cuda:0",n_epochs=1):
     )
 
     optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9,weight_decay=0.0001)
-    
+
     train(
         model, optimizer, train_loader, val_loader, n_epochs=n_epochs, device=device
     )

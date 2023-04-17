@@ -44,7 +44,7 @@ pip install -r requirements.txt
 ## Usage
 ### CIFAR10データセットによる学習 
 ```bash
-python3 train.py
+python3 train/train.py
 ```
 ### StreamlitによるGUI分類アプリ
 ```bash
