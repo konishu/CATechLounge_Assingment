@@ -17,7 +17,7 @@ transform = transforms.Compose(
 
 classes = ('plane', 'car', 'bird', 'cat','deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
-def setup_train_test_datasets(batch_size=16,dryrun=False):
+def setup_train_test_datasets(batch_size=16):
     train_dataset = torchvision.datasets.CIFAR10(root='./data', train=True,
                                                 download=True, transform=transform)
     
@@ -26,21 +26,26 @@ def setup_train_test_datasets(batch_size=16,dryrun=False):
 
     return train_dataset,test_dataset
 
-def setup_train_test_loaders(batch_size, dryrun=False):
-  train_dataset, test_dataset = setup_train_test_datasets(
-      batch_size=batch_size, dryrun=dryrun
-  )
-  train_loader = torch.utils.data.DataLoader(
-      train_dataset,
-      batch_size=batch_size,
-      shuffle=True,
-      drop_last=True,
-      num_workers=2,
-  )
 
-  test_loader = torch.utils.data.DataLoader(testset, batch_size=batch_size,
-                                        shuffle=False, num_workers=2)
-  return train_loader, test_loader
+def setup_train_test_loaders(batch_size):
+    train_dataset, test_dataset = setup_train_test_datasets(
+        batch_size=batch_size
+    )
+    train_loader = torch.utils.data.DataLoader(
+        train_dataset,
+        batch_size=batch_size,
+        shuffle=True,
+        drop_last=True,
+        num_workers=2,
+    )
+
+    test_loader = torch.utils.data.DataLoader(
+        test_dataset,
+        batch_size=batch_size,
+        shuffle=False, 
+        num_workers=2
+    )
+    return train_loader, test_loader
 
 def train_1epoch(model, train_loader, lossfun, optimizer, device):
     model.train()
@@ -95,21 +100,17 @@ def train(model, optimizer, train_loader, val_loader, n_epochs, device):
             f"epoch={epoch}, train loss={train_loss}, train accuracy={train_acc}, val loss={val_loss}, val accuracy={val_acc}"
         )
 
-def train_subsec(batch_size, dryrun=False, device="cuda:0",n_epochs=1):
+def train_subsec(batch_size,device="cuda:0",n_epochs=1):
     model = torchvision.models.resnet50(pretrained=True)
     model.fc = torch.nn.Linear(model.fc.in_features, 10)
     model.to(device)
 
     train_loader, val_loader = setup_train_test_loaders(
-        batch_size, dryrun
+        batch_size
     )
 
     optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9,weight_decay=0.0001)
-    n_iterations = len(train_loader) * n_epochs
-    lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-        optimizer, n_iterations
-    )
-
+    
     train(
         model, optimizer, train_loader, val_loader, n_epochs=n_epochs, device=device
     )
@@ -117,7 +118,7 @@ def train_subsec(batch_size, dryrun=False, device="cuda:0",n_epochs=1):
     return model
 
 if __name__ == '__main__':
-    model = train_subsec(batch_size=64,n_epochs=50,dryrun=False)
+    model = train_subsec(batch_size=64,n_epochs=50)
     now = datetime.datetime.now()
     filename = "/path_to_save_dir/"+ "Resnet34_model_" + now.strftime('%Y%m%d_%H%M%S') + ".pth"
     torch.save(model,filename)
