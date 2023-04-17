@@ -2,10 +2,11 @@
 ## 課題2. Computer Vision①
 
 ## Contents of this Repository
-- [CIFAR10データセット](https://www.cs.toronto.edu/~kriz/cifar.html "CIFAR10")による、10クラスの分類モデルの学習
+- [CIFAR10データセット](https://www.cs.toronto.edu/~kriz/cifar.html "CIFAR10")による、10クラスの分類モデルの学習スクリプト
 - StreamlitによるGUI分類アプリ
 
 ## Demo
+![デモ動画](images/CIFAR10app_sample.gif "Sample video")
 
 ## Environment
 - CIFAR10データセットによる10クラス分類モデルの学習(Google Colab上で実行)
@@ -34,9 +35,6 @@
 ## Requirement
 必要なライブラリのインストール
 ```bash
-# 学習用
-pip install -r requirements.txt
-# 分類アプリ
 pip install -r requirements.txt
 ```
 学習済みモデルのダウンロード
@@ -46,4 +44,8 @@ pip install -r requirements.txt
 ### CIFAR10データセットによる学習 
 ```bash
 python3 train.py
+```
+### StreamlitによるGUI分類アプリ
+```bash
+streamlit run predict_app/predict_app.py
 ```
