@@ -6,7 +6,7 @@
 - StreamlitによるGUI分類アプリ
 
 ## Demo
-![デモ動画](images/CIFAR10app_sample.gif "Sample video")
+![デモ動画](https://drive.google.com/file/d/15GDpDnXOZJj8CIXB0HdVHgxyNfW5_26m/view?usp=sharing "Sample video")
 
 ## Environment
 - CIFAR10データセットによる10クラス分類モデルの学習(Google Colab上で実行)
@@ -38,7 +38,7 @@
 pip install -r requirements.txt
 ```
 学習済みモデルのダウンロード
-**あとで書く**
+**あとで書く!!!**
  
 ## Usage
 ### CIFAR10データセットによる学習 
