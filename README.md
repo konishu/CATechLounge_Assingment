@@ -39,7 +39,8 @@
 pip install -r requirements.txt
 ```
 学習済みモデルのダウンロード
-**あとで書く!!!**
+- [学習済みモデル(Google Driveへのリンク)](https://drive.google.com/file/d/12MHS8ZORc5Z1c7vg1sMw5AhNdG1HwEnA/view?usp=share_link
+ "学習済みモデル")
  
 ## Usage
 ### CIFAR10データセットによる学習 
