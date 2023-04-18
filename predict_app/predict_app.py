@@ -5,7 +5,7 @@ import streamlit as st
 import json
 
 # 学習済みモデルのロード
-model = torch.load('/Users/s_koni/work_dir/python/ML/CIFAR10_app/CIFAR10_app/BackgroundRemoval/Resnet34_model_20230413_113019.pth',
+model = torch.load('/path/to/model.pth',
                    map_location=torch.device('cpu'))
 model.eval()
 
@@ -46,6 +46,7 @@ def preprocess_image(image):
 uploaded_file = st.file_uploader('画像を選択してください。', type=['jpg', 'jpeg', 'png'])
 
 # 描画
+# レイアウトの関係で、colを３つ作成し、真ん中に画像と結果を表示
 col1, col2, col3 = st.columns([3, 3, 3])
 with col1:
     st.write("")
